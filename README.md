@@ -51,4 +51,10 @@ http://localhost:5000
 ~$ flask db upgrade
 ```
 
+## Docker based Setup just restart container to apply migrations
+
+```sh
+~$ docker-compose restart flask
+```
+
 [fisdom-logo]: <https://my.fisdom.com/static/img/plutus-finwizard.png>
