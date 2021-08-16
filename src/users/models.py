@@ -11,3 +11,4 @@ class UserModel(db.Model):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     middle_name = Column(String, nullable=False)
+    name = Column(String, nullable=False)
