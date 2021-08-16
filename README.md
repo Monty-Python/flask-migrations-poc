@@ -33,4 +33,22 @@
 http://localhost:5000
 ```
 
+## Setup Initial DB
+
+```sh
+~$ flask db init
+```
+
+## Create DB migrations
+
+```sh
+~$ flask db migrate
+```
+
+## Migrate DB
+
+```sh
+~$ flask db upgrade
+```
+
 [fisdom-logo]: <https://my.fisdom.com/static/img/plutus-finwizard.png>

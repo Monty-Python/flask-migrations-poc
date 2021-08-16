@@ -26,7 +26,6 @@ services:
 
   flask: 
     build: src/
-    command: python main.py
     depends_on:
       - postgres
     restart: always
@@ -36,12 +35,7 @@ services:
       - 5000:5000
     environment:
       FLASK_DEBUG: "true"
-
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_HOST: postgress
-      POSTGRES_PORT: 5432
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/postgres
 
 volumes:
   flask_migration_poc_db_data:
