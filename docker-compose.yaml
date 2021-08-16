@@ -1,0 +1,47 @@
+version: "3.6"
+
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    ports: 
+      - 5432:5432
+    volumes:
+      - flask_migration_poc_db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4:5.3
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: buzz@pgadmin.local
+      PGADMIN_DEFAULT_PASSWORD: Buzzw0rd
+    ports:
+      - 5050:80
+    depends_on:
+      - postgres
+
+  flask: 
+    build: src/
+    command: python main.py
+    depends_on:
+      - postgres
+    restart: always
+    volumes:
+      - ./src:/code
+    ports: 
+      - 5000:5000
+    environment:
+      FLASK_DEBUG: "true"
+
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_HOST: postgress
+      POSTGRES_PORT: 5432
+
+volumes:
+  flask_migration_poc_db_data:
