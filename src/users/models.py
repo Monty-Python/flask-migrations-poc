@@ -1,7 +1,7 @@
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import Column, String
-from shared.db import db
+from shared import db
 
 
 class UserModel(db.Model):
